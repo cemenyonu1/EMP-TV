@@ -1,4 +1,4 @@
 alert('Hello World');
 
-let favoriteFood= 'burger';
+let favoriteFood= 'steak';
 document.write(favoriteFood);
