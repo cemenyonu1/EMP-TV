@@ -1,10 +1,19 @@
+let pokemonRepository = (function() {
 let pokemonList= [
     {name: 'Bulbasaur', height: 7, type: ['grass', 'poison']},
     {name: 'Charizard', height: 1.7, type: ['fire', 'flying']},
     {name: 'Gyarados', height: 6.5, type: ['water', 'flying']}
 ];
-
-pokemonList.forEach(function(pokemon){
+return {
+    add: function(pokemon) {   
+        pokemonList.push(pokemon);
+    },
+    getAll: function() {
+        return pokemonList;
+    }
+}
+})()
+pokemonRepository.getAll().forEach(function(pokemon){
     document.write(pokemon.name + ' height: ' + pokemon.height)
 
 // for (let i = 0;  pokemonList.length; i++) {
