@@ -4,18 +4,32 @@ let pokemonList= [
     {name: 'Gyarados', height: 6.5, type: ['water', 'flying']}
 ];
 
-for (let i = 0;  pokemonList.length; i++) {
-    // This will display the pokemon names with their heights
-    document.write(pokemonList[i].name + ` (height:  + ${pokemonList[i].height} )` )
+pokemonList.forEach(function(pokemon){
+    document.write(pokemon.name + ' height: ' + pokemon.height)
 
-if (pokemonList[i].height >= 7) {
+// for (let i = 0;  pokemonList.length; i++) {
+    // This will display the pokemon names with their heights
+   // document.write(pokemonList[i].name + ` (height:  + ${pokemonList[i].height} )` )
+   if (pokemon.height >= 7) {
+    // This will display a message for large pokemons
+// if (pokemonList[i].height >= 7) {
     // This will display a message for large pokemons
     document.write(' That\'s a big pokemon! ')
-} else if (pokemonList[i].height > 3 && pokemonList[i].height < 7) {
+} else if (pokemon.height > 3 && pokemon.height < 7) {
+// } else if (pokemonList[i].height > 3 && pokemonList[i].height < 7) {
     // This will display a message for medium pokemons
     document.write(' That\'s a medium sized pokemon! ')
 } else {
     // This will display a message for small pokemons
     document.write(' That\'s a small pokemon! ')
 }
+})
+
+function divide(dividend, divisor) {
+    if (divisor === 0) {
+        return 'You are trying to divide by zero'
+    } else {
+        let result = dividend / divisor ;
+        return result
+    }
 }
