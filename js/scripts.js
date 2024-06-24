@@ -14,24 +14,31 @@ return {
 }
 })()
 pokemonRepository.getAll().forEach(function(pokemon){
-    document.write(pokemon.name + ' height: ' + pokemon.height)
+    let list = document.querySelector('.pokemon-list');
+    let listItem = document.createElement('li');
+    let button = document.createElement('button');
+    button.innerText = pokemonList.name;
+    button.classList.add('.new-button');
+    listItem.appendChild('button');
+    list.appendChild('listItem');
+    //document.write(pokemon.name + ' height: ' + pokemon.height)
 
 // for (let i = 0;  pokemonList.length; i++) {
     // This will display the pokemon names with their heights
    // document.write(pokemonList[i].name + ` (height:  + ${pokemonList[i].height} )` )
-   if (pokemon.height >= 7) {
+   //if (pokemon.height >= 7) {
     // This will display a message for large pokemons
 // if (pokemonList[i].height >= 7) {
     // This will display a message for large pokemons
-    document.write(' That\'s a big pokemon! ')
-} else if (pokemon.height > 3 && pokemon.height < 7) {
+   // document.write(' That\'s a big pokemon! ')
+//} else if (pokemon.height > 3 && pokemon.height < 7) {
 // } else if (pokemonList[i].height > 3 && pokemonList[i].height < 7) {
     // This will display a message for medium pokemons
-    document.write(' That\'s a medium sized pokemon! ')
-} else {
+  //  document.write(' That\'s a medium sized pokemon! ')
+//} else {
     // This will display a message for small pokemons
-    document.write(' That\'s a small pokemon! ')
-}
+  //  document.write(' That\'s a small pokemon! ')
+//}
 })
 
 function divide(dividend, divisor) {
