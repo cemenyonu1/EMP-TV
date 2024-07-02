@@ -1,4 +1,8 @@
 .new-button {
     border-color: green;
-    border: 2px;
+    border-width: 5px;
+    background-color: grey;
+    padding: 20px;
+    margin-bottom: 10px;
+    font-size: 20px;
 }

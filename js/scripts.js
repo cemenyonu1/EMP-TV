@@ -4,6 +4,7 @@ let pokemonList= [
     {name: 'Charizard', height: 1.7, type: ['fire', 'flying']},
     {name: 'Gyarados', height: 6.5, type: ['water', 'flying']}
 ];
+
 return {
     add: function(pokemon) {   
         pokemonList.push(pokemon);
@@ -12,15 +13,22 @@ return {
         return pokemonList;
     }
 }
-})()
-pokemonRepository.getAll().forEach(function(pokemon){
+})();
+
+const addListItem = (pokemon) => {
     let list = document.querySelector('.pokemon-list');
     let listItem = document.createElement('li');
     let button = document.createElement('button');
-    button.innerText = pokemonList.name;
-    button.classList.add('.new-button');
-    listItem.appendChild('button');
-    list.appendChild('listItem');
+    button.innerText = pokemon.name;
+    button.classList.add('new-button');
+    listItem.appendChild(button);
+    list.appendChild(listItem);
+}
+
+pokemonRepository.getAll().forEach(function(pokemon){
+
+    pokemonRepository.addListItem(pokemon);
+    
     //document.write(pokemon.name + ' height: ' + pokemon.height)
 
 // for (let i = 0;  pokemonList.length; i++) {
@@ -40,6 +48,8 @@ pokemonRepository.getAll().forEach(function(pokemon){
   //  document.write(' That\'s a small pokemon! ')
 //}
 })
+
+
 
 function divide(dividend, divisor) {
     if (divisor === 0) {
