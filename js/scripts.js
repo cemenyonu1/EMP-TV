@@ -57,6 +57,7 @@ pokemonRepository.getAll().forEach(function(pokemon){
     // This will display a message for small pokemons
   //  document.write(' That\'s a small pokemon! ')
 //}
+pokemonRepository.addListItem(pokemon);
 });
 
 
