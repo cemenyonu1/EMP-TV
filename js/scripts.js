@@ -5,6 +5,24 @@ let pokemonList= [
     {name: 'Gyarados', height: 6.5, type: ['water', 'flying']}
 ];
 
+const addListItem = (pokemon) => {
+    let list = document.querySelector('.pokemon-list');
+    let listItem = document.createElement('li');
+    let button = document.createElement('button');
+    button.innerText = pokemon.name;
+    button.classList.add('new-button');
+    listItem.appendChild(button);
+    list.appendChild(listItem);
+};
+
+function getAll() {
+    return pokemonList;
+};
+
+function add(pokemon) {
+    pokemonList.push(pokemon);
+};
+
 return {
     add: function(pokemon) {   
         pokemonList.push(pokemon);
@@ -15,15 +33,7 @@ return {
 }
 })();
 
-const addListItem = (pokemon) => {
-    let list = document.querySelector('.pokemon-list');
-    let listItem = document.createElement('li');
-    let button = document.createElement('button');
-    button.innerText = pokemon.name;
-    button.classList.add('new-button');
-    listItem.appendChild(button);
-    list.appendChild(listItem);
-}
+
 
 pokemonRepository.getAll().forEach(function(pokemon){
 
@@ -47,7 +57,7 @@ pokemonRepository.getAll().forEach(function(pokemon){
     // This will display a message for small pokemons
   //  document.write(' That\'s a small pokemon! ')
 //}
-})
+});
 
 
 
