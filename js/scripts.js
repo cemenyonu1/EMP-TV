@@ -5,6 +5,10 @@ let pokemonList= [
     {name: 'Gyarados', height: 6.5, type: ['water', 'flying']}
 ];
 
+const showDetails = (pokemon) => {
+    console.log(pokemon)
+};
+
 const addListItem = (pokemon) => {
     let list = document.querySelector('.pokemon-list');
     let listItem = document.createElement('li');
@@ -13,6 +17,7 @@ const addListItem = (pokemon) => {
     button.classList.add('new-button');
     listItem.appendChild(button);
     list.appendChild(listItem);
+    button.addEventListener('Click', showDetails);
 };
 
 function getAll() {
