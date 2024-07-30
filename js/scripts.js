@@ -20,6 +20,9 @@ function getAll() {
     return pokemonList;
 };
 
+function showDetails(pokemon) {
+    console.log(pokemon)
+};
 
 function addListItem(pokemon) {
     let list = document.querySelector('.pokemon-list');
@@ -29,11 +32,9 @@ function addListItem(pokemon) {
     button.classList.add('new-button');
     listItem.appendChild(button);
     list.appendChild(listItem);
-    button.addEventListener('Click', showDetails);
-};
-
-function showDetails(pokemon) {
-    console.log(pokemon)
+    button.addEventListener('click', function(){
+        showDetails(pokemon)
+    });
 };
 
 return {
