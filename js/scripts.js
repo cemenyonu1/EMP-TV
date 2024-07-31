@@ -1,9 +1,11 @@
 let pokemonRepository = (function() {
     let pokemonList= [
-        {name: 'Bulbasaur', height: 7, type: ['grass', 'poison']},
-        {name: 'Charizard', height: 1.7, type: ['fire', 'flying']},
-        {name: 'Gyarados', height: 6.5, type: ['water', 'flying']}
+        //{name: 'Bulbasaur', height: 7, type: ['grass', 'poison']},
+        //{name: 'Charizard', height: 1.7, type: ['fire', 'flying']},
+        //{name: 'Gyarados', height: 6.5, type: ['water', 'flying']}
     ];
+
+    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
     
     function add(pokemon) {
         if(typeof pokemon === 'object' && 
@@ -37,10 +39,27 @@ let pokemonRepository = (function() {
         });
     };
     
+    function loadList() {
+        return fetch(apiUrl).then( function (response) {
+            return response.json();
+        }).then (function(json) {
+            json.results.forEach(function (item) {
+                let pokemon = {
+                    name: item.name,
+                    detailsUrl: item.url
+                };
+                add (pokemon);
+            });
+            }).catch (function (e){
+                console.error(e);
+            })
+    };
+
     return {
         add: add,
         getAll: getAll,
-        addListItem: addListItem
+        //addListItem: addListItem
+        loadList: loadList
     };
     })();
     
