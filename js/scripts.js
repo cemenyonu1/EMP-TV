@@ -10,8 +10,9 @@ let pokemonRepository = (function() {
     function add(pokemon) {
         if(typeof pokemon === 'object' && 
         'name' in pokemon && 
-        'height' in pokemon && 
-        'type' in pokemon) {
+        //'height' in pokemon && 
+        //'type' in pokemon
+        'detailsUrl' in pokemon ) {
         pokemonList.push(pokemon);
         } else {
             console.log('pokemon is not correct');
@@ -49,25 +50,47 @@ let pokemonRepository = (function() {
                     detailsUrl: item.url
                 };
                 add (pokemon);
+                console.log(pokemon);
             });
             }).catch (function (e){
                 console.error(e);
             })
     };
 
+    function loadDetails (item) {
+        let url = item.detailsUrl;
+        return fetch(url).then(function(response) {
+            return response.json();
+        }).then(function (details) {
+            item.imageUrl = details.sprites.front_default;
+            item.height = details.height;
+            item.types = details.types;
+        }).catch(function(e) {
+            console.error(e);
+        });
+    };
+
+    function showDetails(pokemon) {
+        loadDetails(pokemon).then(function() {
+            console.log(pokemon)
+        })
+    };
+
     return {
         add: add,
         getAll: getAll,
-        //addListItem: addListItem
-        loadList: loadList
+        addListItem: addListItem,
+        loadList: loadList,
+        loadDetails: loadDetails,
+        showDetails: showDetails
     };
     })();
     
     
+    pokemonRepository.loadList().then(function () {
+        pokemonRepository.getAll().forEach(function(pokemon){
     
-    pokemonRepository.getAll().forEach(function(pokemon){
-    
-        pokemonRepository.addListItem(pokemon);
+            pokemonRepository.addListItem(pokemon);
         
         //document.write(pokemon.name + ' height: ' + pokemon.height)
     
@@ -87,7 +110,8 @@ let pokemonRepository = (function() {
         // This will display a message for small pokemons
       //  document.write(' That\'s a small pokemon! ')
     //}
-    });
+        });
+    })
     
     
     
