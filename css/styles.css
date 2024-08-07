@@ -6,3 +6,8 @@
     margin-bottom: 10px;
     font-size: 20px;
 }
+
+.is-visible {
+    display: grid;
+    text-align: center;
+}

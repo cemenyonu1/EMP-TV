@@ -6,6 +6,7 @@ let pokemonRepository = (function() {
     ];
 
     let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+    let modalContainer = document.querySelector('#modal-container')
     
     function add(pokemon) {
         if(typeof pokemon === 'object' && 
@@ -24,7 +25,19 @@ let pokemonRepository = (function() {
     };
     
     function showDetails(pokemon) {
-        console.log(pokemon)
+        console.log(pokemon);
+        modalContainer.innerHTML= '';
+        
+        //create modal
+        let modal = document.createElement('div');
+        modal.classList.add('modal');
+
+        //create button
+        let button = document.createElement('button');
+        button.classList.add('yes-button');
+
+        //append
+        
     };
     
     function addListItem(pokemon) {
@@ -84,42 +97,42 @@ let pokemonRepository = (function() {
         loadDetails: loadDetails,
         showDetails: showDetails
     };
-    })();
+})();
     
     
-    pokemonRepository.loadList().then(function () {
-        pokemonRepository.getAll().forEach(function(pokemon){
-    
-            pokemonRepository.addListItem(pokemon);
+pokemonRepository.loadList().then(function () {
+    pokemonRepository.getAll().forEach(function(pokemon){
+
+        pokemonRepository.addListItem(pokemon);
         
         //document.write(pokemon.name + ' height: ' + pokemon.height)
     
-    // for (let i = 0;  pokemonList.length; i++) {
+        // for (let i = 0;  pokemonList.length; i++) {
         // This will display the pokemon names with their heights
        // document.write(pokemonList[i].name + ` (height:  + ${pokemonList[i].height} )` )
        //if (pokemon.height >= 7) {
         // This will display a message for large pokemons
-    // if (pokemonList[i].height >= 7) {
+        // if (pokemonList[i].height >= 7) {
         // This will display a message for large pokemons
        // document.write(' That\'s a big pokemon! ')
-    //} else if (pokemon.height > 3 && pokemon.height < 7) {
-    // } else if (pokemonList[i].height > 3 && pokemonList[i].height < 7) {
+        //} else if (pokemon.height > 3 && pokemon.height < 7) {
+        // } else if (pokemonList[i].height > 3 && pokemonList[i].height < 7) {
         // This will display a message for medium pokemons
       //  document.write(' That\'s a medium sized pokemon! ')
-    //} else {
+        //} else {
         // This will display a message for small pokemons
       //  document.write(' That\'s a small pokemon! ')
-    //}
-        });
-    })
+        //}
+    });
+})
     
     
     
-    function divide(dividend, divisor) {
-        if (divisor === 0) {
-            return 'You are trying to divide by zero'
-        } else {
-            let result = dividend / divisor ;
-            return result
-        }
+function divide(dividend, divisor) {
+    if (divisor === 0) {
+        return 'You are trying to divide by zero'
+    } else {
+        let result = dividend / divisor ;
+        return result
     }
+}
