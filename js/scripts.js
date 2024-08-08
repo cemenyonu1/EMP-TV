@@ -30,14 +30,32 @@ let pokemonRepository = (function() {
         
         //create modal
         let modal = document.createElement('div');
-        modal.classList.add('modal');
+        modal.classList.add('pokemon-list-modal');
+
+        let info = document.createElement('div');
+        info.classList.add('pokemon-info');
+
+        let name = document.createElement('h1');
+        name.innerText= 'Pokemon Name';
+
+        let height = document.createElement('h3');
+        let pic = document.createElement('img')
 
         //create button
         let button = document.createElement('button');
-        button.classList.add('yes-button');
+        button.classList.add('back-button');
 
         //append
-        
+        modalContainer.appendChild(modal);
+        modal.appendChild(info);
+        info.appendChild(name);
+        info.appendChild(height);
+        info.appendChild(pic);
+
+        //event listeners
+        button.addEventListener('click', () => {
+            modal.classList.remove('is.visible')
+        })
     };
     
     function addListItem(pokemon) {
