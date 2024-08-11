@@ -44,17 +44,19 @@ let pokemonRepository = (function() {
         //create button
         let button = document.createElement('button');
         button.classList.add('back-button');
+        button.innerText='Close';
 
         //append
-        modalContainer.appendChild(modal);
         modal.appendChild(info);
         info.appendChild(name);
         info.appendChild(height);
         info.appendChild(pic);
+        info.appendChild(button);
+        modalContainer.appendChild(modal);
 
         //event listeners
         button.addEventListener('click', () => {
-            modal.classList.remove('is.visible')
+            modal.classList.add('is.visible')
         })
     };
     
@@ -101,11 +103,11 @@ let pokemonRepository = (function() {
         });
     };
 
-    function showDetails(pokemon) {
-        loadDetails(pokemon).then(function() {
-            console.log(pokemon)
-        })
-    };
+    //function showDetails(pokemon) {
+       // loadDetails(pokemon).then(function() {
+     //       console.log(pokemon)
+      //  })
+   // };
 
     return {
         add: add,

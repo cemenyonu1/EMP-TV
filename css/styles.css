@@ -47,6 +47,6 @@
 }
 */
 .pokemon-list.is-visible {
-    display: grid;
+    display: none;
     text-align: center;
 }
