@@ -36,10 +36,13 @@ let pokemonRepository = (function() {
         info.classList.add('pokemon-info');
 
         let name = document.createElement('h1');
-        name.innerText= 'Pokemon Name';
+        name.innerText= pokemon.name;
 
         let height = document.createElement('h3');
-        let pic = document.createElement('img')
+        height.innerText = 'Height: ' + pokemon.height + ' cm';
+
+        let pic = document.createElement('img');
+        pic.src = pokemon.imageUrl
 
         //create button
         let button = document.createElement('button');
@@ -56,7 +59,7 @@ let pokemonRepository = (function() {
 
         //event listeners
         button.addEventListener('click', () => {
-            modal.classList.add('is.visible')
+            modal.classList.add('is-visible')
         })
     };
     
