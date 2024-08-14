@@ -25,42 +25,44 @@ let pokemonRepository = (function() {
     };
     
     function showDetails(pokemon) {
-        console.log(pokemon);
-        modalContainer.innerHTML= '';
+        loadDetails(pokemon).then(function() {
+            console.log(pokemon);
+            modalContainer.innerHTML= '';
         
-        //create modal
-        let modal = document.createElement('div');
-        modal.classList.add('pokemon-list-modal');
+            //create modal
+            let modal = document.createElement('div');
+            modal.classList.add('pokemon-list-modal');
 
-        let info = document.createElement('div');
-        info.classList.add('pokemon-info');
+            let info = document.createElement('div');
+            info.classList.add('pokemon-info');
 
-        let name = document.createElement('h1');
-        name.innerText= pokemon.name;
+            let name = document.createElement('h1');
+            name.innerText= pokemon.name;
 
-        let height = document.createElement('h3');
-        height.innerText = 'Height: ' + pokemon.height + ' cm';
+            let height = document.createElement('h3');
+            height.innerText = 'Height: ' + pokemon.height + ' cm';
 
-        let pic = document.createElement('img');
-        pic.src = pokemon.imageUrl
+            let pic = document.createElement('img');
+            pic.src = pokemon.imageUrl
 
-        //create button
-        let button = document.createElement('button');
-        button.classList.add('back-button');
-        button.innerText='Close';
+            //create button
+            let button = document.createElement('button');
+            button.classList.add('back-button');
+            button.innerText='Close';
 
-        //append
-        modal.appendChild(info);
-        info.appendChild(name);
-        info.appendChild(height);
-        info.appendChild(pic);
-        info.appendChild(button);
-        modalContainer.appendChild(modal);
+            //append
+            modal.appendChild(info);
+            info.appendChild(name);
+            info.appendChild(height);
+            info.appendChild(pic);
+            info.appendChild(button);
+            modalContainer.appendChild(modal);
 
-        //event listeners
-        button.addEventListener('click', () => {
+            //event listeners
+            button.addEventListener('click', () => {
             modal.classList.add('is-visible')
-        })
+            });
+        });
     };
     
     function addListItem(pokemon) {
