@@ -149,7 +149,7 @@ pokemonRepository.loadList().then(function () {
       //  document.write(' That\'s a small pokemon! ')
         //}
     });
-})
+});
     
     
     
