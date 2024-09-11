@@ -46,10 +46,25 @@ let pokemonRepository = (function() {
         
         //create modal
         let modal = document.createElement('div');
-        modal.classList.add('pokemon-list-modal');
+        //modal.classList.add('pokemon-list-modal');
+        modal.classList.add('modal');
+        modal.setAttribute('id', 'my-modal');
+
+        let dialog = document.createElement('div');
+        dialog.classList.add('modal-dialog');
+        dialog.classList.add('modal-xl');
+
+        let content = document.createElement('div');
+        content.classList.add('modal-content');
+
+        let header = document.createElement('div');
+        header.classList.add('modal-header');
 
         let info = document.createElement('div');
         info.classList.add('pokemon-info');
+
+        let body = document.createElement('div');
+        body.classList.add('modal-body');
 
         let name = document.createElement('h1');
         name.innerText= pokename; 
@@ -66,8 +81,13 @@ let pokemonRepository = (function() {
         button.innerText='Close';
 
         //append
-        modal.appendChild(info);
-        info.appendChild(name);
+        modal.appendChild(dialog);
+        dialog.appendChild(content);
+        content.appendChild(header);
+        header.appendChild(name);
+        content.appendChild(body);
+        body.appendChild(info);
+        //info.appendChild(name);
         info.appendChild(height);
         info.appendChild(pic);
         info.appendChild(button);
@@ -98,8 +118,17 @@ let pokemonRepository = (function() {
         let list = document.querySelector('.pokemon-list');
         let listItem = document.createElement('li');
         let button = document.createElement('button');
+        //list.classList='';
+        list.classList.add('list-group');
+        //listItem.classList='';
+        listItem.classList.add('list-group-item');
+
         button.innerText = pokemon.name;
-        button.classList.add('new-button');
+        //button.classList.add('new-button');
+        button.classList.add('btn-primary');
+        button.setAttribute('data-toggle', 'modal');
+        button.setAttribute('data-target','my-modal')
+
         listItem.appendChild(button);
         list.appendChild(listItem);
         button.addEventListener('click', function(){
