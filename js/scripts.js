@@ -1,8 +1,6 @@
 let pokemonRepository = (function() {
     let pokemonList= [
-        //{name: 'Bulbasaur', height: 7, type: ['grass', 'poison']},
-        //{name: 'Charizard', height: 1.7, type: ['fire', 'flying']},
-        //{name: 'Gyarados', height: 6.5, type: ['water', 'flying']}
+       
     ];
 
     let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
@@ -11,8 +9,6 @@ let pokemonRepository = (function() {
     function add(pokemon) {
         if(typeof pokemon === 'object' && 
         'name' in pokemon && 
-        //'height' in pokemon && 
-        //'type' in pokemon
         'detailsUrl' in pokemon ) {
         pokemonList.push(pokemon);
         } else {
@@ -28,14 +24,10 @@ let pokemonRepository = (function() {
         loadDetails(pokemon).then(function() {
             showModal(pokemon.name, pokemon.height, pokemon.imageUrl)           
         });
-       // document.querySelector('.new-button').addEventListener('click', () => {
-         //   showModal();
-       // });
     };
     
     //showModal function
     function showModal(pokename, pokeheight, pokeimage) {
-       //modalContainer.innerHTML= '';
         
         modalTitle = document.querySelector('#pokemonModalLabel');
         modalBody = document.querySelector('.modal-body');
@@ -50,10 +42,29 @@ let pokemonRepository = (function() {
         pic.src = pokeimage;
         pic.classList.add('img-fluid');
 
+        let buttonToolbar = document.createElement('div');
+        buttonToolbar.innerHTML = `<div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with buttons"></div>`;
+
+        let buttonGroup = document.createElement('div');
+        buttonGroup.innerHTML = `<div class="btn-group" role="group"></div>`;
+
+        let nextButton = document.createElement('button');
+        nextButton.innerHTML = '<div class ="btn btn-secondary"><p>Next Pokemon</p></div>';
+
+        let backButton = document.createElement('button');
+        backButton.innerHTML = '<div class ="btn btn-secondary"><p>Previous Pokemon</p></div>';
+
+        let hr = document.createElement('hr');
+
         //append
 
         modalBody.appendChild(height);
         modalBody.appendChild(pic);
+        modalBody.appendChild(hr);
+        modalBody.appendChild(buttonToolbar);
+        buttonToolbar.appendChild(buttonGroup);
+        buttonGroup.appendChild(nextButton);
+        buttonGroup.appendChild(backButton);
 
         $('#pokemonModal').modal('show');
        
@@ -73,14 +84,14 @@ let pokemonRepository = (function() {
     };
 
     function addListItem(pokemon) {
-        let list = document.querySelector('.list-group');
+        let list = document.querySelector('.list-group-flush');
         let listItem = document.createElement('li');
         let button = document.createElement('button');
      
         listItem.classList.add('list-group-item');
 
-        button.innerText = pokemon.name;
-        button.classList.add('btn', 'btn-primary');
+        button.innerHTML = pokemon.name;
+        button.classList.add('btn', 'btn-primary', 'btn-block', 'btn-lg');
 
         button.addEventListener('click', function(){
             showDetails(pokemon)
@@ -122,12 +133,6 @@ let pokemonRepository = (function() {
         });
     };
 
-    //function showDetails(pokemon) {
-       // loadDetails(pokemon).then(function() {
-     //       console.log(pokemon)
-      //  })
-   // };
-
     return {
         add: add,
         getAll: getAll,
@@ -143,25 +148,6 @@ pokemonRepository.loadList().then(function () {
     pokemonRepository.getAll().forEach(function(pokemon){
 
         pokemonRepository.addListItem(pokemon);
-        
-        //document.write(pokemon.name + ' height: ' + pokemon.height)
-    
-        // for (let i = 0;  pokemonList.length; i++) {
-        // This will display the pokemon names with their heights
-       // document.write(pokemonList[i].name + ` (height:  + ${pokemonList[i].height} )` )
-       //if (pokemon.height >= 7) {
-        // This will display a message for large pokemons
-        // if (pokemonList[i].height >= 7) {
-        // This will display a message for large pokemons
-       // document.write(' That\'s a big pokemon! ')
-        //} else if (pokemon.height > 3 && pokemon.height < 7) {
-        // } else if (pokemonList[i].height > 3 && pokemonList[i].height < 7) {
-        // This will display a message for medium pokemons
-      //  document.write(' That\'s a medium sized pokemon! ')
-        //} else {
-        // This will display a message for small pokemons
-      //  document.write(' That\'s a small pokemon! ')
-        //}
     });
 });
     
