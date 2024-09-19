@@ -116,8 +116,8 @@ let pokemonRepository = (function() {
         listItem.appendChild(card);
         list.appendChild(listItem);
         card.appendChild(cardBody);
-        cardBody.appendChild(cardTitle);
         cardBody.appendChild(cardPic);
+        cardBody.appendChild(cardTitle);
         cardBody.appendChild(hr);
         cardBody.appendChild(button);
         
@@ -160,7 +160,8 @@ let pokemonRepository = (function() {
         addListItem: addListItem,
         loadList: loadList,
         loadDetails: loadDetails,
-        showDetails: showDetails
+        showDetails: showDetails,
+        showModal: showModal
     };
 })();
     
@@ -171,14 +172,3 @@ pokemonRepository.loadList().then(function () {
         pokemonRepository.addListItem(pokemon);
     });
 });
-    
-    
-    
-function divide(dividend, divisor) {
-    if (divisor === 0) {
-        return 'You are trying to divide by zero'
-    } else {
-        let result = dividend / divisor ;
-        return result
-    }
-}
