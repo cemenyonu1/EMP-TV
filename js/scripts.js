@@ -84,21 +84,42 @@ let pokemonRepository = (function() {
     };
 
     function addListItem(pokemon) {
-        let list = document.querySelector('.list-group-flush');
-        let listItem = document.createElement('li');
+        let list = document.querySelector('#list');
+        let listItem = document.createElement('div');
         let button = document.createElement('button');
      
-        listItem.classList.add('list-group-item');
+        listItem.classList.add('col-lg-3', 'col-md-4', 'col-sm-6', 'col-12', 'mb-4');
 
-        button.innerHTML = pokemon.name;
-        button.classList.add('btn', 'btn-primary', 'btn-block', 'btn-lg');
+        let card = document.createElement('div');
+        card.classList.add('card', 'mb-3', 'h-100', 'text-center');
+
+        let cardBody = document.createElement('div');
+        cardBody.classList.add('card-body');
+
+        let cardTitle = document.createElement('h1');
+        cardTitle.classList.add('card-text', 'text-center')
+        cardTitle.innerText = pokemon.name
+
+        let cardPic = document.createElement('img');
+        cardPic.classList.add('card-img-top')
+        cardPic.src = pokemon.imageUrl;
+
+        button.innerText = 'Learn More';
+        button.classList.add('btn', 'btn-outline-dark', 'btn-block', 'btn-lg');
+
+        let hr = document.createElement('hr');
 
         button.addEventListener('click', function(){
             showDetails(pokemon)
         });
 
-        listItem.appendChild(button);
+        listItem.appendChild(card);
         list.appendChild(listItem);
+        card.appendChild(cardBody);
+        cardBody.appendChild(cardTitle);
+        cardBody.appendChild(cardPic);
+        cardBody.appendChild(hr);
+        cardBody.appendChild(button);
         
         
     };
