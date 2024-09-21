@@ -33,6 +33,8 @@ let pokemonRepository = (function() {
         modalBody = document.querySelector('.modal-body');
 
         modalTitle.innerText = pokename;
+        modalTitle.classList.add('text-capitalize')
+
         modalBody.innerHTML = '';
 
         let height = document.createElement('h3');
@@ -42,29 +44,10 @@ let pokemonRepository = (function() {
         pic.src = pokeimage;
         pic.classList.add('img-fluid');
 
-        let buttonToolbar = document.createElement('div');
-        buttonToolbar.innerHTML = `<div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with buttons"></div>`;
-
-        let buttonGroup = document.createElement('div');
-        buttonGroup.innerHTML = `<div class="btn-group" role="group"></div>`;
-
-        let nextButton = document.createElement('button');
-        nextButton.innerHTML = '<div class ="btn btn-secondary"><p>Next Pokemon</p></div>';
-
-        let backButton = document.createElement('button');
-        backButton.innerHTML = '<div class ="btn btn-secondary"><p>Previous Pokemon</p></div>';
-
-        let hr = document.createElement('hr');
-
         //append
 
         modalBody.appendChild(height);
         modalBody.appendChild(pic);
-        modalBody.appendChild(hr);
-        modalBody.appendChild(buttonToolbar);
-        buttonToolbar.appendChild(buttonGroup);
-        buttonGroup.appendChild(nextButton);
-        buttonGroup.appendChild(backButton);
 
         $('#pokemonModal').modal('show');
        
@@ -96,13 +79,9 @@ let pokemonRepository = (function() {
         let cardBody = document.createElement('div');
         cardBody.classList.add('card-body');
 
-        let cardTitle = document.createElement('h1');
-        cardTitle.classList.add('card-text', 'text-center')
+        let cardTitle = document.createElement('h3');
+        cardTitle.classList.add('card-text', 'text-center', 'text-capitalize')
         cardTitle.innerText = pokemon.name
-
-        let cardPic = document.createElement('img');
-        cardPic.classList.add('card-img-top')
-        cardPic.src = pokemon.imageUrl;
 
         button.innerText = 'Learn More';
         button.classList.add('btn', 'btn-outline-dark', 'btn-block', 'btn-lg');
@@ -116,7 +95,6 @@ let pokemonRepository = (function() {
         listItem.appendChild(card);
         list.appendChild(listItem);
         card.appendChild(cardBody);
-        cardBody.appendChild(cardPic);
         cardBody.appendChild(cardTitle);
         cardBody.appendChild(hr);
         cardBody.appendChild(button);
